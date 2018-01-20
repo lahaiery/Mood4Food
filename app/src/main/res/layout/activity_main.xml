@@ -8,6 +8,12 @@
     android:addStatesFromChildren="false"
     tools:context="com.example.ryanr.spartahack.MainActivity">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragment_layout">
+    </FrameLayout>
+
     <TextView
         android:id="@+id/message"
         android:layout_width="wrap_content"
@@ -32,3 +38,4 @@
         app:menu="@menu/navigation" />
 
 </android.support.constraint.ConstraintLayout>
+
