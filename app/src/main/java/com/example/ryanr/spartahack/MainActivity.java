@@ -1,5 +1,6 @@
 package com.example.ryanr.spartahack;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -12,7 +13,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+        implements MenuFragment.OnFragmentInteractionListener,SearchFragment.OnFragmentInteractionListener
+        ,FavoritesFragment.OnFragmentInteractionListener{
 
     private TextView mTextMessage;
 
@@ -23,15 +26,13 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_menu:
-
-                    mTextMessage.setText(R.string.title_Menu);
                     switchToMenu();
                     return true;
                 case R.id.navigation_favs:
-                    mTextMessage.setText(R.string.title_Favorites);
+                    switchToFavorites();
                     return true;
                 case R.id.navigation_search:
-                    mTextMessage.setText(R.string.title_Search);
+                    switchToSearch();
                     return true;
             }
             return false;
@@ -50,12 +51,27 @@ public class MainActivity extends AppCompatActivity {
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
+        switchToMenu();
     }
 
     public void switchToMenu() {
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.fragment_layout, new MenuFragment()).commit();
+    }
+
+    public void switchToSearch() {
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.fragment_layout, new SearchFragment()).commit();
+    }
+
+    public void switchToFavorites() {
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.fragment_layout, new FavoritesFragment()).commit();
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri){
+        //you can leave it empty
     }
 
 }
