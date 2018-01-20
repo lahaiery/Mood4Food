@@ -10,7 +10,9 @@ import java.sql.Statement;
  * Connects to PostgreSQL database and provides interface for retrieving info from database
  */
 
+
 public class DatabaseManager {
+    private String dbURL = "postgres://zuptntbeyfahuc:aa1b6e72bb23de35245ed2bb5a58be1671e51fab36942e2be569f65eeae2674b@ec2-54-243-193-227.compute-1.amazonaws.com:5432/da24i8fioenidl";
     private Connection c;
 
     /**
@@ -21,9 +23,7 @@ public class DatabaseManager {
         // Connect to PostgreSQL db
         try {
             Class.forName("org.postgresql.Driver");
-            c = DriverManager.getConnection(
-                    "postgres://zuptntbeyfahuc:aa1b6e72bb23de35245ed2bb5a58be1671e51fab36942e2be569f65eeae2674b@ec2-54-243-193-227.compute-1.amazonaws.com:5432/da24i8fioenidl",
-                    "postgres", "123");
+            c = DriverManager.getConnection(dbURL, "postgres", "123");
         } catch (Exception e) {
             e.printStackTrace();
             System.err.println(e.getClass().getName()+": "+e.getMessage());
