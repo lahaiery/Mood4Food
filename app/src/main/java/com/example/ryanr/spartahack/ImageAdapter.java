@@ -1,3 +1,5 @@
+package com.example.ryanr.spartahack;
+
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +51,7 @@ public class ImageAdapter extends BaseAdapter {
 
     // references to our images
     private Integer[] mThumbIds = {
-            R.drawable.Breakfast, R.drawable.Lunch,
-            R.drawable.Dinner, R.drawable.LateNight,
+            R.drawable.breakfast, R.drawable.lunch,
+            R.drawable.dinner, R.drawable.latenight,
     };
 }

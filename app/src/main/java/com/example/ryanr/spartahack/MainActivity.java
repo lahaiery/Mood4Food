@@ -72,6 +72,12 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
+    public void switchToFilters() {
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.fragment_layout, new FilterFragment()).commit();
+    }
+
+    @Override
     public void onFragmentInteraction(Uri uri){
         //you can leave it empty
     }
