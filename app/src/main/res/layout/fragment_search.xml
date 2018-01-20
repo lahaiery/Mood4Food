@@ -4,10 +4,28 @@
     android:layout_height="match_parent"
     tools:context="com.example.ryanr.spartahack.SearchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/title_Search" />
+
+    <EditText
+        android:id="@+id/searchText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/spinner2"
+        android:layout_toStartOf="@+id/spinner2"
+        android:drawableLeft="@drawable/ic_searchbar"
+        android:ems="10"
+        android:hint="@string/title_Search"
+        android:inputType="textPersonName" />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/searchText"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" />
 
 </RelativeLayout>
