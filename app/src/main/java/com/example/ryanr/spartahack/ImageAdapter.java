@@ -1,6 +1,7 @@
 package com.example.ryanr.spartahack;
 
 import android.content.Context;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -15,13 +16,20 @@ import com.example.ryanr.spartahack.R;
 
 public class ImageAdapter extends BaseAdapter {
     private Context mContext;
-
-    public ImageAdapter(Context c) {
+    private Integer[] mImagesList;
+    private int mList = 0;
+    public ImageAdapter(Context c, int index) {
         mContext = c;
+        mList = index;
+        if(index==0){
+            this.mImagesList= mMenuIds;
+        } else if(index==1){
+            this.mImagesList= mFilterIds;
+        }
     }
 
     public int getCount() {
-        return mThumbIds.length;
+        return mImagesList.length;
     }
 
     public Object getItem(int position) {
@@ -35,23 +43,39 @@ public class ImageAdapter extends BaseAdapter {
     // create a new ImageView for each item referenced by the Adapter
     public View getView(int position, View convertView, ViewGroup parent) {
         ImageView imageView;
-        if (convertView == null) {
-            // if it's not recycled, initialize some attributes
-            imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new GridView.LayoutParams(200, 200));
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setPadding(8, 8, 8, 8);
-        } else {
-            imageView = (ImageView) convertView;
-        }
+        imageView = new ImageView(mContext);
 
-        imageView.setImageResource(mThumbIds[position]);
+        int screenWidth = parent.getMeasuredWidth();
+        int screenHeight = parent.getMeasuredHeight();
+        /*if(position+1 == getCount())
+        {
+            //imageView.setLayoutParams(new GridView.LayoutParams(screenWidth/2,  screenHeight/10));
+        }*/
+        if(mList == 0)
+        {
+            imageView.setLayoutParams(new GridView.LayoutParams(screenWidth/2,screenWidth/2));
+        }
+        else if(mList == 1)
+        {
+            imageView.setLayoutParams(new GridView.LayoutParams(screenWidth,screenWidth));
+        }
+        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+        imageView.setPadding(0, 0, 0, 0);
+
+        imageView.setImageResource(mImagesList[position]);
         return imageView;
     }
 
     // references to our images
-    private Integer[] mThumbIds = {
-            R.drawable.breakfast, R.drawable.lunch,
-            R.drawable.dinner, R.drawable.latenight,
+    private Integer[] mFilterIds = {
+            R.drawable.breakfast, R.drawable.lunch, R.drawable.dinner, R.drawable.latenight,
     };
+
+    private Integer[] mMenuIds = {
+            R.drawable.akers, R.drawable.brody, R.drawable.ncase, R.drawable.landon,
+            R.drawable.holden, R.drawable.holmes, R.drawable.owen, R.drawable.snyphi,
+            R.drawable.wilson, R.drawable.shaw, R.drawable.blank,
+    };
+
+
 }
