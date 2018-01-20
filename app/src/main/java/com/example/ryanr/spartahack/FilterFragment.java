@@ -57,7 +57,7 @@ public class FilterFragment extends Fragment {
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-
+                mListener.switchToFilters();
             }
         });
         return view;
@@ -98,7 +98,7 @@ public class FilterFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
+        public void switchToFilters();
         void onFragmentInteraction(Uri uri);
     }
 }
