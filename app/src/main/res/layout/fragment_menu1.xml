@@ -10,5 +10,13 @@
         android:layout_height="match_parent"
         android:text="@string/title_Menu" />
 
+    <TextView
+        android:id="@+id/dbTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="TextView" />
+
 
 </RelativeLayout>
