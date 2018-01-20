@@ -2,6 +2,36 @@
     <string name="app_name">Spartahack</string>
     <string name="title_Favorites">Favorites</string>
     <string name="title_Menu">Menu</string>
-    <string name="title_Search">Search</string>>
+    <string name="title_Search">Search</string>
 
+    <string name="filter_Meals">Meals:</string>
+    <string name="filter_Allergens">Allergens:</string>
+    <string name="filter_Preferences">Preferences:</string>
+
+    <string name="filter_Breakfast">Breakfast</string>
+    <string name="filter_Lunch">Lunch</string>
+    <string name="filter_Dinner">Dinner</string>
+    <string name="filter_LateNight">LateNight</string>
+
+    <string-array name="filter_array">
+        <item>Breakfast</item>
+        <item>Lunch</item>
+        <item>Dinner</item>
+        <item>Latenight</item>
+    </string-array>
+    <string-array name="caf_array">
+        <item>Akers</item>
+        <item>Brody</item>
+        <item>Case</item>
+        <item>Holden</item>
+        <item>Holmes</item>
+        <item>Landon</item>
+        <item>Owen</item>
+        <item>Shaw</item>
+        <item>Snyder Phillips</item>
+        <item>Wilson</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
         implements MenuFragment.OnFragmentInteractionListener,SearchFragment.OnFragmentInteractionListener
-        ,FavoritesFragment.OnFragmentInteractionListener{
+        ,FavoritesFragment.OnFragmentInteractionListener, FilterFragment.OnFragmentInteractionListener{
 
     private TextView mTextMessage;
 
@@ -52,6 +52,8 @@ public class MainActivity extends AppCompatActivity
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         switchToMenu();
+
+
     }
 
     public void switchToMenu() {

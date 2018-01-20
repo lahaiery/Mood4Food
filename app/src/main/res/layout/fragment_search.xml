@@ -32,14 +32,5 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/ic_dropdown" />
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/searchText"
-        android:entries="@array/filter_array"
-        />
-
 
 </RelativeLayout>
