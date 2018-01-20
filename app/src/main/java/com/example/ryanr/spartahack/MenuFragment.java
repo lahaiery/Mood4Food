@@ -52,6 +52,16 @@ public class MenuFragment extends Fragment {
         GridView gridview = (GridView) view.findViewById(R.id.Menugridview);
         gridview.setAdapter(new ImageAdapter(getActivity(),0));
 
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v,
+                                    int position, long id) {
+                if(id==1) {
+
+                }
+
+            }
+        });
+
         return view;
     }
 
@@ -90,7 +100,7 @@ public class MenuFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
+        public void switchToFilters();
         void onFragmentInteraction(Uri uri);
     }
 }

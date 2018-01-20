@@ -3,36 +3,30 @@ package com.example.ryanr.spartahack;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.GridView;
-import android.widget.Toast;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link FilterFragment.OnFragmentInteractionListener} interface
+ * {@link CafFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link FilterFragment#newInstance} factory method to
+ * Use the {@link CafFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FilterFragment extends Fragment {
-
+public class CafFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
-    public FilterFragment() {
+    public CafFragment() {
         // Required empty public constructor
     }
 
-    // TODO: Rename and change types and number of parameters
-    public static FilterFragment newInstance(String param1, String param2) {
-        FilterFragment fragment = new FilterFragment();
+    public static CafFragment newInstance(String param1, String param2) {
+        CafFragment fragment = new CafFragment();
         Bundle args = new Bundle();
-
         fragment.setArguments(args);
         return fragment;
     }
@@ -40,7 +34,6 @@ public class FilterFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.main);
         if (getArguments() != null) {
         }
     }
@@ -48,12 +41,8 @@ public class FilterFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        View view = inflater.inflate(R.layout.fragment_filter, container, false);
-
-        GridView gridview = (GridView) view.findViewById(R.id.Filtergridview);
-        gridview.setAdapter(new ImageAdapter(getActivity(), 1));
-        return view;
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_caf, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -91,7 +80,7 @@ public class FilterFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        public void switchToFilters();
+        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
 }
