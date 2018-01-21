@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:addStatesFromChildren="false"
+    android:fitsSystemWindows="true"
     tools:context="com.example.ryanr.spartahack.MainActivity">
 
     <FrameLayout

@@ -62,18 +62,11 @@
         android:textSize="10dp"
         android:text="@string/title_next" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/dateTextView"
-        android:layout_below="@+id/dateTextView"
-        android:text="TextView" />
-
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView2" />
+        android:layout_below="@+id/dateTextView"
+        android:entries="@array/caf_array" />
 
 </RelativeLayout>
