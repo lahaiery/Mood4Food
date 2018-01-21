@@ -3,10 +3,11 @@ package com.example.ryanr.spartahack;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 /**
@@ -14,34 +15,42 @@ import android.view.ViewGroup;
  * Activities that contain this fragment must implement the
  * {@link CafFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link CafFragment#newInstance} factory method to
- * create an instance of this fragment.
  */
 public class CafFragment extends Fragment {
+
     private OnFragmentInteractionListener mListener;
 
     public CafFragment() {
         // Required empty public constructor
     }
 
-    public static CafFragment newInstance(String param1, String param2) {
-        CafFragment fragment = new CafFragment();
+    // TODO: Rename and change types and number of parameters
+    public static CafFragment newInstance(int cafID) {
         Bundle args = new Bundle();
+        args.putInt("cafID", cafID);
+
+        CafFragment fragment = new CafFragment();
         fragment.setArguments(args);
+
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        if (getArguments() != null) {
+            Bundle args = getArguments();
+            int cafID = args.getInt("cafID", 0);
+            TextView t = (TextView) this.getView().findViewById(R.id.cafNameText);
+            t.setText(cafID);
+        }
+
         return inflater.inflate(R.layout.fragment_caf, container, false);
     }
 

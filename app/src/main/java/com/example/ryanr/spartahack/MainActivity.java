@@ -15,7 +15,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
         implements MenuFragment.OnFragmentInteractionListener,SearchFragment.OnFragmentInteractionListener
-        ,FavoritesFragment.OnFragmentInteractionListener, FilterFragment.OnFragmentInteractionListener{
+        ,FavoritesFragment.OnFragmentInteractionListener, FilterFragment.OnFragmentInteractionListener,
+        CafFragment.OnFragmentInteractionListener{
 
     private TextView mTextMessage;
 
@@ -75,6 +76,14 @@ public class MainActivity extends AppCompatActivity
     public void switchToFilters() {
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.fragment_layout, new FilterFragment()).commit();
+    }
+
+    @Override
+    public void switchToCaf(int pos) {
+        FragmentManager manager = getSupportFragmentManager();
+        Bundle bundle = new Bundle();
+        bundle.putInt("cafID", pos);
+        manager.beginTransaction().replace(R.id.fragment_layout, new CafFragment()).commit();
     }
 
     @Override

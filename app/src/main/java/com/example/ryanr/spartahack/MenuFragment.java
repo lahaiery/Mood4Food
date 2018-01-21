@@ -55,10 +55,7 @@ public class MenuFragment extends Fragment {
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-                if(id==1) {
-
-                }
-
+                    mListener.switchToCaf(position);
             }
         });
 
@@ -100,7 +97,7 @@ public class MenuFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        public void switchToFilters();
+        public void switchToCaf(int pos);
         void onFragmentInteraction(Uri uri);
     }
 }
