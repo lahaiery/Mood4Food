@@ -52,7 +52,16 @@ public class FilterFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_filter, container, false);
 
         GridView gridview = (GridView) view.findViewById(R.id.Filtergridview);
-        gridview.setAdapter(new ImageAdapter(getActivity(), 1));
+        final ImageAdapter imageAdapter= new ImageAdapter(getActivity(), 1);
+        gridview.setAdapter(imageAdapter);
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            public void onItemClick(AdapterView<?> parent, View v,
+                                    int position, long id) {
+                imageAdapter.switchFilterState(position);
+                imageAdapter.notifyDataSetChanged();
+            }
+        });
         return view;
     }
 

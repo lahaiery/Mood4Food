@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity
         CafFragment.OnFragmentInteractionListener{
 
     private TextView mTextMessage;
+    private FilterFragment ff;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -81,10 +82,14 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void switchToCaf(int pos) {
         FragmentManager manager = getSupportFragmentManager();
-        Bundle bundle = new Bundle();
-        bundle.putInt("cafID", pos);
-        manager.beginTransaction().replace(R.id.fragment_layout, new CafFragment()).commit();
+        FragmentTransaction fragmentTransaction = manager.beginTransaction();
+
+        Fragment fragment = CafFragment.newInstance(pos);
+        fragmentTransaction.replace(R.id.fragment_layout, fragment);
+        fragmentTransaction.commit();
     }
+
+
 
     @Override
     public void onFragmentInteraction(Uri uri){

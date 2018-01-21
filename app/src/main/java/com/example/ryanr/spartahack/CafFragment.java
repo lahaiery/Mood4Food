@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewDebug;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -19,7 +22,8 @@ import android.widget.TextView;
 public class CafFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
-
+    private int cafNum;
+    private View view;
     public CafFragment() {
         // Required empty public constructor
     }
@@ -35,6 +39,7 @@ public class CafFragment extends Fragment {
         return fragment;
     }
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,14 +49,16 @@ public class CafFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_caf, container, false);
         if (getArguments() != null) {
+            int cafID = 0;
             Bundle args = getArguments();
-            int cafID = args.getInt("cafID", 0);
-            TextView t = (TextView) this.getView().findViewById(R.id.cafNameText);
-            t.setText(cafID);
+            cafNum = args.getInt("cafID");
+            TextView t = (TextView) view.findViewById(R.id.cafNameText);
+            PageSetup(t);
         }
 
-        return inflater.inflate(R.layout.fragment_caf, container, false);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -69,6 +76,42 @@ public class CafFragment extends Fragment {
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    public void PageSetup(TextView t) {
+        ImageView img = (ImageView) view.findViewById(R.id.cafImageView);
+        switch (cafNum) {
+            case 0:
+                img.setImageResource(R.drawable.akerscaf);
+                break;
+            case 1:
+                img.setImageResource(R.drawable.brodycaf);
+                break;
+            case 2:
+                img.setImageResource(R.drawable.casehall);
+                break;
+            case 3:
+                img.setImageResource(R.drawable.landoncaf);
+                break;
+            case 4:
+                img.setImageResource(R.drawable.holdencaf);
+                break;
+            case 5:
+                img.setImageResource(R.drawable.holmescaf);
+                break;
+            case 6:
+                img.setImageResource(R.drawable.owencaf);
+                break;
+            case 7:
+                img.setImageResource(R.drawable.snyphicaf);
+                break;
+            case 8:
+                img.setImageResource(R.drawable.wilsoncaf);
+                break;
+            case 9:
+                img.setImageResource(R.drawable.shawcaf);
+                break;
         }
     }
 
@@ -92,4 +135,11 @@ public class CafFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+    // references to our images
+    private Integer[] mCafImages = {
+            R.drawable.akerscaf,  R.drawable.snyphicaf,  R.drawable.brodycaf, R.drawable.holdencaf,
+            R.drawable.landoncaf, R.drawable.shawcaf, R.drawable.wilsoncaf, R.drawable.owencaf,
+            R.drawable.holmescaf, R.drawable.casehall,
+    };
 }
