@@ -15,23 +15,24 @@ import android.widget.Toast;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link MenuFragment.OnFragmentInteractionListener} interface
+ * {@link FilterFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link MenuFragment#newInstance} factory method to
+ * Use the {@link FilterFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MenuFragment extends Fragment {
+public class FilterFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public MenuFragment() {
+    public FilterFragment() {
         // Required empty public constructor
     }
 
     // TODO: Rename and change types and number of parameters
-    public static MenuFragment newInstance(String param1, String param2) {
-        MenuFragment fragment = new MenuFragment();
+    public static FilterFragment newInstance(String param1, String param2) {
+        FilterFragment fragment = new FilterFragment();
         Bundle args = new Bundle();
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -39,6 +40,7 @@ public class MenuFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //setContentView(R.layout.main);
         if (getArguments() != null) {
         }
     }
@@ -47,18 +49,19 @@ public class MenuFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_menu1, container, false);
+        View view = inflater.inflate(R.layout.fragment_filter, container, false);
 
-        GridView gridview = (GridView) view.findViewById(R.id.Menugridview);
-        gridview.setAdapter(new ImageAdapter(getActivity(),0));
-
+        GridView gridview = (GridView) view.findViewById(R.id.Filtergridview);
+        final ImageAdapter imageAdapter= new ImageAdapter(getActivity(), 1);
+        gridview.setAdapter(imageAdapter);
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-                    mListener.switchToCaf(position);
+                imageAdapter.switchFilterState(position);
+                imageAdapter.notifyDataSetChanged();
             }
         });
-
         return view;
     }
 
@@ -97,7 +100,7 @@ public class MenuFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        public void switchToCaf(int pos);
+        public void switchToFilters();
         void onFragmentInteraction(Uri uri);
     }
 }

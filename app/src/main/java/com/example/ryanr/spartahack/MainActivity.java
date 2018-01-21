@@ -15,9 +15,11 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
         implements MenuFragment.OnFragmentInteractionListener,SearchFragment.OnFragmentInteractionListener
-        ,FavoritesFragment.OnFragmentInteractionListener{
+        ,FavoritesFragment.OnFragmentInteractionListener, FilterFragment.OnFragmentInteractionListener,
+        CafFragment.OnFragmentInteractionListener{
 
     private TextView mTextMessage;
+    private FilterFragment ff;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -52,6 +54,8 @@ public class MainActivity extends AppCompatActivity
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         switchToMenu();
+
+
     }
 
     public void switchToMenu() {
@@ -68,6 +72,24 @@ public class MainActivity extends AppCompatActivity
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.fragment_layout, new FavoritesFragment()).commit();
     }
+
+    @Override
+    public void switchToFilters() {
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.fragment_layout, new FilterFragment()).commit();
+    }
+
+    @Override
+    public void switchToCaf(int pos) {
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = manager.beginTransaction();
+
+        Fragment fragment = CafFragment.newInstance(pos);
+        fragmentTransaction.replace(R.id.fragment_layout, fragment);
+        fragmentTransaction.commit();
+    }
+
+
 
     @Override
     public void onFragmentInteraction(Uri uri){
