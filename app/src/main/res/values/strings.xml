@@ -12,13 +12,16 @@
     <string name="filter_Lunch">Lunch</string>
     <string name="filter_Dinner">Dinner</string>
     <string name="filter_LateNight">LateNight</string>
+    <string name="title_next">Next Day</string>
+    <string name="title_prev">Previous Day</string>
 
-    <string-array name="filter_array">
+    <string-array name="spinner_array">
         <item>Breakfast</item>
         <item>Lunch</item>
         <item>Dinner</item>
         <item>Latenight</item>
     </string-array>
+
     <string-array name="caf_array">
         <item>Akers</item>
         <item>Brody</item>

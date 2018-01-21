@@ -3,24 +3,77 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ryanr.spartahack.CafFragment">
+    tools:context="com.example.ryanr.spartahack.CafFragment"
+    android:statusBarColor="@color/colorSpartan">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:id="@+id/cafNameText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:textColor="@color/colorBlack"
-        />
+        android:textSize="40dp" />
 
     <ImageView
         android:id="@+id/cafImageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="373dp"
+        android:layout_marginBottom="354dp"
         android:src="@drawable/akerscaf" />
+
+    <TextView
+        android:id="@+id/dateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nextDaybutton"
+        android:layout_centerHorizontal="true"
+        android:text="TextView" />
+
+    <Spinner
+        android:id="@+id/mealSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/nextDaybutton"
+        android:layout_alignBottom="@+id/nextDaybutton"
+        android:layout_toStartOf="@+id/nextDaybutton"
+        android:entries="@array/spinner_array" />
+
+    <Button
+        android:id="@+id/prevDaybutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="204dp"
+        android:textSize="10dp"
+        android:text="@string/title_prev" />
+
+    <Button
+        android:id="@+id/nextDaybutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/prevDaybutton"
+        android:layout_alignBottom="@+id/prevDaybutton"
+        android:layout_alignParentEnd="true"
+        android:textSize="10dp"
+        android:text="@string/title_next" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/dateTextView"
+        android:layout_below="@+id/dateTextView"
+        android:text="TextView" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView2" />
 
 </RelativeLayout>

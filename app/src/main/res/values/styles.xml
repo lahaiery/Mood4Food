@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="CustomTheme" >
+        <item name="android:textSize">8sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

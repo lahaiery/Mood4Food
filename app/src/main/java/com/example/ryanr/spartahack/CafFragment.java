@@ -1,16 +1,33 @@
 package com.example.ryanr.spartahack;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.ContextThemeWrapper;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewDebug;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.GridLayout;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.Spinner;
+import android.widget.TabHost;
 import android.widget.TextView;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 
 /**
@@ -24,6 +41,11 @@ public class CafFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
     private int cafNum;
     private View view;
+    private String currentMeal;
+    Date todaysdate = new Date();
+    SimpleDateFormat sdf = new SimpleDateFormat("EEEE, MMMM dd");
+    Date d = new Date();
+    String dayOfTheWeek = sdf.format(d);
     public CafFragment() {
         // Required empty public constructor
     }
@@ -50,14 +72,62 @@ public class CafFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_caf, container, false);
+
+        final Context contextThemeWrapper = new ContextThemeWrapper(getActivity(), R.style.CustomTheme);
+
         if (getArguments() != null) {
             int cafID = 0;
             Bundle args = getArguments();
             cafNum = args.getInt("cafID");
-            TextView t = (TextView) view.findViewById(R.id.cafNameText);
-            PageSetup(t);
+            PageSetup();
+            TextView textView = (TextView) view.findViewById(R.id.dateTextView);
+            textView.setText(dayOfTheWeek);
+
         }
 
+        final Spinner spinner =(Spinner) view.findViewById(R.id.mealSpinner);
+        ///Function to get current selected value of the Meal selection spinner
+        spinner.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+
+                        Object item = parent.getItemAtPosition(pos);
+                        currentMeal = item.toString();
+                    }
+                    public void onNothingSelected(AdapterView<?> parent) {
+                    }
+
+           });
+
+
+
+        Button prev = (Button) view.findViewById(R.id.prevDaybutton);
+        prev.setOnClickListener(new View.OnClickListener() {
+            //Function to add subtract day every time prev day button is clicked
+            public void onClick(View paramView) {
+                Calendar cal = new GregorianCalendar();
+                cal.setTime(d);
+                cal.add(Calendar.DATE, -1);
+                d = cal.getTime();
+                dayOfTheWeek = sdf.format(d);
+                TextView textView = (TextView) view.findViewById(R.id.dateTextView);
+                textView.setText(dayOfTheWeek);
+            }
+        });
+
+        Button next = (Button) view.findViewById(R.id.nextDaybutton);
+        next.setOnClickListener(new View.OnClickListener() {
+            //Function to add one day every time next day button is clicked
+            public void onClick(View paramView) {
+                Calendar cal = new GregorianCalendar();
+                cal.setTime(d);
+                cal.add(Calendar.DATE, +1);
+                d = cal.getTime();
+                dayOfTheWeek = sdf.format(d);
+                TextView textView = (TextView) view.findViewById(R.id.dateTextView);
+                textView.setText(dayOfTheWeek);
+            }
+        });
         return view;
     }
 
@@ -79,7 +149,7 @@ public class CafFragment extends Fragment {
         }
     }
 
-    public void PageSetup(TextView t) {
+    public void PageSetup() {
         ImageView img = (ImageView) view.findViewById(R.id.cafImageView);
         switch (cafNum) {
             case 0:
